@@ -121,11 +121,11 @@ jobs:
         if: always()
         run: |
           OUTPUT_DIR="${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}"
+          mkdir -p "$OUTPUT_DIR"
           if [ -f "$OUTPUT_DIR/report-notify.md" ]; then
             echo "✅ 报告文件已找到"
           else
             echo "⚠️ 未找到 report-notify.md，创建空文件"
-            mkdir -p "$OUTPUT_DIR"
             echo "# XServer 续期报告" > "$OUTPUT_DIR/report-notify.md"
             echo "" >> "$OUTPUT_DIR/report-notify.md"
             echo "脚本未生成报告文件" >> "$OUTPUT_DIR/report-notify.md"
@@ -166,15 +166,25 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
+          # 创建 xserver 目录
+          mkdir -p xserver
+          
           # 从私库目录复制文件到公开库的 xserver 目录
           if [ -f "$OUTPUT_DIR/report-notify.md" ]; then
-            cat "$OUTPUT_DIR/report-notify.md" > "xserver/report-notify.md"
+            cp "$OUTPUT_DIR/report-notify.md" "xserver/report-notify.md"
             echo "✅ 报告文件已复制到 xserver 目录"
+          else
+            echo "⚠️ 报告文件不存在，创建空文件"
+            echo "# XServer 续期报告" > "xserver/report-notify.md"
+            echo "脚本未生成报告文件" >> "xserver/report-notify.md"
           fi
           
           if [ -f "$OUTPUT_DIR/time.txt" ]; then
-            cat "$OUTPUT_DIR/time.txt" > "xserver/time.txt"
+            cp "$OUTPUT_DIR/time.txt" "xserver/time.txt"
             echo "✅ 时间文件已复制到 xserver 目录"
+          else
+            echo "⚠️ 时间文件不存在，创建新文件"
+            date +'%Y-%m-%d %H:%M:%S' > "xserver/time.txt"
           fi
           
           # 添加文件到 git
