@@ -101,7 +101,6 @@ jobs:
           ZAMPTO_SERVER_ID: ${{ secrets.ZAMPTO_SERVER_ID }}
           HY2_PROXY_URL: ${{ secrets.HY2_PROXY_URL }}
           SOCKS_PORT: ${{ secrets.SOCKS_PORT || '51080' }}
-          SCREENSHOT_DIR: ${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}/screenshots
         run: xvfb-run -a python ${{ env.SCRIPT_NAME }}
         working-directory: ${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}
 
