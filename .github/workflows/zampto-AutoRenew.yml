@@ -90,7 +90,7 @@ jobs:
           ZAMPTO_BATCH: ${{ secrets.ZAMPTO_BATCH }}
           HY2_PROXY_URL: ${{ secrets.HY2_PROXY_URL }}
           SOCKS_PORT: ${{ secrets.SOCKS_PORT || '51080' }}
-          SCREENSHOT_DIR: ${{ env.PROJECT_DIR }}/screenshots
+          SCREENSHOT_DIR: screenshots
         run: python ${{ env.SCRIPT_NAME }} -r ${{ env.RETRY_COUNT }}
         working-directory: ${{ env.PROJECT_DIR }}
 
