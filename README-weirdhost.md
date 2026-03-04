@@ -6,13 +6,13 @@
 
 ## 1、设置环境变量，环境变量格式如下：
 
-- WEIRDHOST_TG_BOT_TOKEN  (可选)
-- WEIRDHOST_TG_CHAT_ID     (可选)
-
 以下为必填
 - PRIVATE_REPO_TOKEN （用于读取私库的 token，可跟其他库共用）
 
-- WEIRDHOST_REMEMBER_WEB_COOKIE 具体值如下
+- WEIRDHOST_BATCH（支持多人，但是多人的情况下，统计信息会默认发送到第一个用户的tg里面，也就是说多账号的情况下，会有2个tg消息，单人只有一条）
+  具体格式为: cookie1,tg_bot_token1,tg_chat_id1;cookie2,tg_bot_token2,tg_chat_id2
+  
+  cookie具体取值如下
 
   <img width="1577" height="570" alt="CleanShot 2026-02-14 at 20 27 03" src="https://github.com/user-attachments/assets/3e395d6f-f9b1-41bb-9136-9cb7835110e5" />
 
