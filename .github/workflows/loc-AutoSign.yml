@@ -88,7 +88,7 @@ jobs:
       # 步骤 7: 执行脚本
       - name: 🚀 执行 ${{ env.SCRIPT_DESC }}
         env:
-          LOC_BATCH: ${{ secrets.LOC_BATCH }}
+          LOC_BATCH: ${{ secrets.NODELOC_BATCH }}
           HY2_PROXY_URL: ${{ secrets.NODELOC_HY2_PROXY_URL }}
           SOCKS_PORT: ${{ secrets.SOCKS_PORT || '51080' }}
           SCREENSHOT_DIR: "screenshots"
