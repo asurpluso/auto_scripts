@@ -7,8 +7,8 @@ on:
   
   # 定时触发
   schedule:
-    # UTC 02:11 (北京时间 10:11) 每周日
-    - cron: "11 2 * * 0"
+    # UTC 03:28 (北京时间 11:28) 每周日
+    - cron: "28 3 * * 0"
 
 # 权限配置：允许提交和推送更改
 permissions:
@@ -76,7 +76,7 @@ jobs:
       # 步骤 5.6: 安装 Hysteria2（如果需要代理）
       - name: 📡 安装 Hysteria2
         run: |
-          if [ -n "${{ secrets.HY2_PROXY_URL }}" ]; then
+          if [ -n "${{ secrets.HY2_PROXY_URL_US6 }}" ]; then
             echo "安装 Hysteria2..."
             curl -L -o hysteria \
               https://github.com/apernet/hysteria/releases/latest/download/hysteria-linux-amd64
@@ -98,8 +98,8 @@ jobs:
       # 步骤 7: 执行脚本
       - name: 🚀 执行 ${{ env.SCRIPT_DESC }}
         env:
-          ACCOUNTS_BATCH: ${{ secrets.LUNES_ACCOUNTS_BATCH }}
-          HY2_PROXY_URL: ${{ secrets.HY2_PROXY_URL }}
+          ACCOUNTS_BATCH: ${{ secrets.LUNES_ACCOUNTS_BATCH_US6 }}
+          HY2_PROXY_URL: ${{ secrets.HY2_PROXY_URL_US6 }}
           SOCKS_PORT: ${{ secrets.SOCKS_PORT || '51080' }}
           SCREENSHOT_DIR: ${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}/screenshots
         run: xvfb-run -a python ${{ env.SCRIPT_NAME }}
