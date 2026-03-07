@@ -9,6 +9,7 @@
 -1.1、 PRIVATE_REPO_TOKEN （用于读取私库的 token，可跟其他库共用）如果本仓库里其他
 
 -1.2、 lunes的账号环境变量
+      
        LUNES_ACCOUNTS_BATCH_DE1 （lunes-DE1的账号环境变量）     
        LUNES_ACCOUNTS_BATCH_US2 （lunes-US2的账号环境变量）
        LUNES_ACCOUNTS_BATCH_US6 （lunes-US6的账号环境变量）
