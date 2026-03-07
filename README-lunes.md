@@ -34,7 +34,8 @@ a2@gmail.com,pass2,123456:AAxxxxxx,123456789'
 
 
 -1.3、 Hysteria2 代理 URL
-       LUNES_DE1_HY2_PROXY_URL （可选，lunes-DE的Hysteria2 代理 URL）
+LUNES_DE1_HY2_PROXY_URL （可选，lunes-DE的Hysteria2 代理 URL）
+```
        LUNES_US2_HY2_PROXY_URL （可选，lunes-US2的Hysteria2 代理 URL）
        LUNES_US6_HY2_PROXY_URL （可选，lunes-US6的Hysteria2 代理 URL）
 
