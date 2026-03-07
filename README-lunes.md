@@ -8,7 +8,9 @@
 
 -1.1、 PRIVATE_REPO_TOKEN （用于读取私库的 token，可跟其他库共用）如果本仓库里其他
 
--1.2、 LUNES_ACCOUNTS_BATCH （lunes的账号环境变量）
+-1.2、 LUNES_ACCOUNTS_BATCH_DE1 （lunes-DE1的账号环境变量）
+       LUNES_ACCOUNTS_BATCH_US2 （lunes-US2的账号环境变量）
+       LUNES_ACCOUNTS_BATCH_US6 （lunes-US6的账号环境变量）
 
 ```
 LUNES_ACCOUNTS_BATCH='a1@gmail.com,pass1
@@ -27,7 +29,9 @@ a2@gmail.com,pass2,123456:AAxxxxxx,123456789'
 2、发 TG：email,password,tg_bot_token,tg_chat_id
 
 
--1.3、 HY2_PROXY_URL （可选，Hysteria2 代理 URL）
+-1.3、 HY2_PROXY_URL_DE1 （可选，lunes-DE的Hysteria2 代理 URL）
+       HY2_PROXY_URL_US2 （可选，lunes-US2的Hysteria2 代理 URL）
+       HY2_PROXY_URL_US6 （可选，lunes-US6的Hysteria2 代理 URL）
 
 ```
 HY2_PROXY_URL=hysteria2://[uuid]@[host]:[port]?sni=xxx&insecure=1&alpn=h3
