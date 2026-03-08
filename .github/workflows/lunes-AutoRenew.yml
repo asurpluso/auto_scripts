@@ -100,7 +100,7 @@ jobs:
           ACCOUNTS_BATCH: ${{ secrets.LUNES_ACCOUNTS_BATCH }}
           HY2_PROXY_URL: ${{ secrets.HY2_PROXY_URL }}
           SOCKS_PORT: ${{ secrets.SOCKS_PORT || '51080' }}
-          SCREENSHOT_DIR: screenshots
+          SCREENSHOT_DIR: ${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}/screenshots
         run: xvfb-run -a python ${{ env.SCRIPT_NAME }}
         working-directory: ${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}
 
@@ -110,7 +110,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: lunes-screenshots
-          path: ${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}/screenshots
+          path: ${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}/screenshots/
           retention-days: 7
           if-no-files-found: warn
 
