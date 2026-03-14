@@ -29,13 +29,14 @@ token2,session_id2,tg_token2,tg_chat_id2
 
 3、token(Discord 账号 Token)的取值方式如下：
 - 打开 Discord 网页版 → F12 → Network → 任意请求 → Headers → authorization
+- 
 4、session_id (Discord Session ID) 的取值方式如下：
 - F12 → Network → 找一个 interactions 请求 → Payload → session_id
 
 ![Berry Session ID](https://github.com/jyucoeng/auto_scripts/blob/main/images/berry_session_id.png)
 
 
-- HY2_PROXY_URL （可选，Hysteria2 代理 URL，）
+- BERRY_HY2_PROXY_URL （可选，Hysteria2 代理 URL，）
 
 ```
 HY2_PROXY_URL='hysteria2://[auth]@[host]:[port]/?sni=xxx&insecure=1&alpn=h3'
