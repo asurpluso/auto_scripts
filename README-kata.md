@@ -10,6 +10,8 @@
 
 - KATABUMP_ACCOUNTS_BATCH （katabump 的账号环境变量）
 
+- KATABUMP_HY2_PROXY_URL  （可选，Hysteria2 代理 URL）
+
 ```
 KATABUMP_BATCH='a1@example.com,pass1,218445
 a2@example.com,pass2,998877,123456:AAxxxxxx,123456789'
