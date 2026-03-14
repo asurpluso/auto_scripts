@@ -6,7 +6,7 @@ on:
 env:
   PROJECT_DIR: berry
   BERRY_BATCH_ACCOUNTS: ${{ secrets.BERRY_BATCH_ACCOUNTS }}
-  HY2_PROXY_URL: ${{ secrets.HY2_PROXY_URL }}
+  HY2_PROXY_URL: ${{ secrets.BERRY_HY2_PROXY_URL }}
   SOCKS_PORT: ${{ secrets.SOCKS_PORT || '51080' }}
 permissions:
   contents: write
