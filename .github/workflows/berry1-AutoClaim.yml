@@ -58,7 +58,7 @@ jobs:
 
       - name: 🎮 执行每日领取
         env:
-          BERRY_BATCH_ACCOUNTS: ${{ env.BERRY1_BATCH_ACCOUNTS }}
+          BERRY_BATCH_ACCOUNTS: ${{ env.BERRY_BATCH_ACCOUNTS }}
           HY2_PROXY_URL: ${{ env.HY2_PROXY_URL }}
           SOCKS_PORT: ${{ env.SOCKS_PORT }}
         run: |
