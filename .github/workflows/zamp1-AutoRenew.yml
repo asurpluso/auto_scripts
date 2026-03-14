@@ -20,9 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      PROJECT_DIR: zampto
+      PROJECT_DIR: zampto1
       SCRIPT_NAME: zampto-renew.py
-      SCRIPT_DESC: Zampto 续期脚本
+      SCRIPT_DESC: Zampto1 续期脚本
     
     steps:
       # 步骤 1: 检出公开仓库
@@ -123,7 +123,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           mkdir -p zampto1 && echo "$(date +'%Y-%m-%d %H:%M:%S')" > zampto1/time.txt
-          git add zampto/time.txt 2>/dev/null || true
+          git add zampto1/time.txt 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "无变化，无需提交"
           else
