@@ -2,7 +2,7 @@ name: 🔄 BerryHost1 Auto Claim
 on:
   workflow_dispatch:
   schedule:
-    - cron: '23 0 * * *'   # 每天 UTC 00:23（北京时间 08:23）
+    - cron: '28 3 * * *'   # 每天 UTC 03:28（北京时间 11:28）
 env:
   PROJECT_DIR: berry1
   BERRY_BATCH_ACCOUNTS: ${{ secrets.BERRY1_BATCH_ACCOUNTS }}
