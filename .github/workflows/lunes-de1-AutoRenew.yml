@@ -18,9 +18,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
-      PROJECT_DIR: lunes
+      PROJECT_DIR: lunes-de1
       SCRIPT_NAME: login.py
-      SCRIPT_DESC: Lunes 登录续期脚本
+      SCRIPT_DESC: Lunes-de1 登录续期脚本
     
     steps:
       # 步骤 1: 检出公开仓库
@@ -133,13 +133,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          mkdir -p lunes && echo "$(date +'%Y-%m-%d %H:%M:%S')" > lunes/time.txt
+          mkdir -p lunes-de1 && echo "$(date +'%Y-%m-%d %H:%M:%S')" > lunes-de1/time.txt
           git add lunes/time.txt 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "无变化，无需提交"
           else
             TIMESTAMP=$(date +'%Y-%m-%d %H:%M:%S')
-            git commit -m "⏱️ 更新 lunes 时间文件: $TIMESTAMP"
+            git commit -m "⏱️ 更新 lunes-de1 时间文件: $TIMESTAMP"
             git fetch origin main
             git push -f origin HEAD:main
             echo "✅ 更改已推送"
