@@ -134,7 +134,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           mkdir -p lunes-de1 && echo "$(date +'%Y-%m-%d %H:%M:%S')" > lunes-de1/time.txt
-          git add lunes/time.txt 2>/dev/null || true
+          git add lunes-de1/time.txt 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "无变化，无需提交"
           else
