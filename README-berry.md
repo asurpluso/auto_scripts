@@ -1,7 +1,8 @@
 # auto_berry berryhost游戏机自动领取奖励 建议每天运行一次
 
 需要通过下面的链接入群组，然后才能创建account，进而创建 game server。
-https://discord.com/invite/YJhY4NqaKU
+
+![点此邀请进入](https://discord.com/invite/YJhY4NqaKU)
 
 你需要做以下修改：
 
