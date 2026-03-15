@@ -45,7 +45,7 @@ def send_tg_message(status_icon, status_text, time_left):
         f"{status_icon} {status_text}\n"
         f"⏱️ 剩余: {time_left}\n"
         f"时间: {current_time_str}"
-        f"🌐 当前出口真实 IP: {sb.get_text('body')}"
+        f"🌐 当前出口真实 IP: {https://api.ipify.org/?format=json}"
     )
 
     url = f"https://api.telegram.org/bot{TG_BOT_TOKEN}/sendMessage"
@@ -373,7 +373,7 @@ def renew(sb) -> bool:
         if "2 days 23" in timer_text or "3 days" in timer_text:
             print("✅ 完美！续期任务圆满完成！")
             sb.save_screenshot("renew_success.png")
-            send_tg_message("✅", "续期完成", timer_text)
+            send_tg_message("✅", "完美！续期任务圆满完成！", timer_text)
             return True
         else:
             print("⚠️ 倒计时似乎没有重置到最高值，请人工检查截图确认。")
