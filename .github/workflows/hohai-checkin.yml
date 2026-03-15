@@ -14,7 +14,7 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: hohai-claim
+  group: hohai-checkin
   cancel-in-progress: false
 
 jobs:
