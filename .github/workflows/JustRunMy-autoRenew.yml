@@ -48,9 +48,16 @@ jobs:
             echo "⚠️ 未配置代理，跳过 Hysteria2 安装"
           fi
 
+      - name: ⏳ 添加随机延迟
+        run: |
+          delay=$((RANDOM % 120))
+          echo "随机延迟: ${delay}秒"
+          sleep $delay
+
           
       - name: 🚀 运行续期脚本
         env:
+          HY2_PROXY_URL: ${{ secrets.JUSTRUNMY_HY2_PROXY_URL }}
           JUSTRUNMY_EMAIL: ${{ secrets.JUSTRUNMY_EMAIL }}
           JUSTRUNMY_PASSWORD: ${{ secrets.JUSTRUNMY_PASSWORD }}
           TG_BOT_TOKEN: ${{ secrets.JUSTRUNMY_TG_BOT_TOKEN }}
