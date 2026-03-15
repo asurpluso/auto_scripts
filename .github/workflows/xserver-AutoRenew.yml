@@ -82,7 +82,7 @@ jobs:
       # 步骤 5.6: 安装 Hysteria2（如果需要代理）
       - name: 📡 安装 Hysteria2
         run: |
-          if [ -n "${{ secrets.HY2_PROXY_URL }}" ]; then
+          if [ -n "${{ secrets.XSERVER_GAME_HY2_PROXY_URL }}" ]; then
             echo "安装 Hysteria2..."
             curl -L -o hysteria \
               https://github.com/apernet/hysteria/releases/latest/download/hysteria-linux-amd64
@@ -108,7 +108,7 @@ jobs:
           XSERVER_PASSWORD: ${{ secrets.XSERVER_GAME_PASSWORD }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.XSERVER_GAME_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.XSERVER_GAME_TELEGRAM_CHAT_ID }}
-          HY2_PROXY_URL: ${{ secrets.HY2_PROXY_URL }}
+          HY2_PROXY_URL: ${{ secrets.XSERVER_GAME_HY2_PROXY_URL }}
           SOCKS_PORT: ${{ secrets.SOCKS_PORT || '51080' }}
 
           #以下2个不要动，不会请不要碰
