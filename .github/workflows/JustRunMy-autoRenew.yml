@@ -33,10 +33,16 @@ jobs:
           pip install seleniumbase aiohttp requests
           seleniumbase install chromedriver
 
+          
+      - name: 🌐 安装 Playwright 浏览器
+        run: |
+          python -m playwright install chromium
+        working-directory: ${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}
+
 
       - name: 📡 安装 Hysteria2
         run: |
-          if [ -n "${{ secrets.JustRunMy_HY2_PROXY_URL }}" ]; then
+          if [ -n "${{ secrets.JUSTRUNMY_HY2_PROXY_URL }}" ]; then
             echo "安装 Hysteria2..."
             curl -L -o hysteria \
               https://github.com/apernet/hysteria/releases/latest/download/hysteria-linux-amd64
@@ -60,8 +66,8 @@ jobs:
         env:
           JUSTRUNMY_EMAIL: ${{ secrets.JUSTRUNMY_EMAIL }}
           JUSTRUNMY_PASSWORD: ${{ secrets.JUSTRUNMY_PASSWORD }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          TG_BOT_TOKEN: ${{ secrets.JUSTRUNMY_TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.JUSTRUNMY_TG_CHAT_ID }}
         run: |
           xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" \
             python justrunmy_renew.py
