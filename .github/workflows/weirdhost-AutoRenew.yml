@@ -8,9 +8,6 @@ on:
 
 permissions:
   contents: write
-concurrency:
-  group: berry-claim
-  cancel-in-progress: false
 
 jobs:
   renew:
