@@ -21,7 +21,7 @@ jobs:
           
       - name: 🛡️ 启动 Gost 代理转发 (可选)
         env:
-          GOST_PROXY_TARGET: ${{ secrets.GOST_PROXY_TARGET }}
+          GOST_PROXY_TARGET: ${{ secrets.JUSTRUNMY_GOST_PROXY_TARGET }}
         run: |
           if [ -z "$GOST_PROXY_TARGET" ]; then
             echo "ℹ️ 未配置 GOST_PROXY_TARGET，将使用 GitHub Actions 本地网络直连。"
