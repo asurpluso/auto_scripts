@@ -41,11 +41,10 @@ def send_tg_message(status_icon, status_text, time_left):
 
     # 按照格式拼接消息，动态注入抓取到的应用名称
     text = (
-        f"justrunmy.app 续期报告\n🖥 {DYNAMIC_APP_NAME}\n"
+        f"justrunmy.app 续期报告\n🖥服务器名:{DYNAMIC_APP_NAME}\n"
         f"{status_icon} {status_text}\n"
         f"⏱️ 剩余: {time_left}\n"
-        f"时间: {current_time_str}"
-        f"🌐 当前出口真实 IP: {https://api.ipify.org/?format=json}"
+        f"脚本执行时间: {current_time_str}"
     )
 
     url = f"https://api.telegram.org/bot{TG_BOT_TOKEN}/sendMessage"
