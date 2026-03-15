@@ -36,8 +36,10 @@ jobs:
 
 
       - name: 📡 安装 Hysteria2
+        env:
+          GOST_PROXY_TARGET: ${{ secrets.JUSTRUNMY_HY2_PROXY_URL }}
         run: |
-          if [ -n "${{ secrets.JUSTRUNMY_HY2_PROXY_URL }}" ]; then
+          if [ -z "$GOST_PROXY_TARGET" ]; then
             echo "安装 Hysteria2..."
             curl -L -o hysteria \
               https://github.com/apernet/hysteria/releases/latest/download/hysteria-linux-amd64
@@ -47,8 +49,11 @@ jobs:
             echo "✅ Hysteria2 安装完成"
           else
             echo "⚠️ 未配置代理，跳过 Hysteria2 安装"
+            sleep 3
+            echo "测试本地代理连通性..."
+            curl -x http://127.0.0.1:8080 https://api.ipify.org -v
+            echo "USE_PROXY=true" >> $GITHUB_ENV
           fi
-
 
 
           
