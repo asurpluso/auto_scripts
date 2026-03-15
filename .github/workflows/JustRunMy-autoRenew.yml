@@ -39,7 +39,7 @@ jobs:
         env:
           GOST_PROXY_TARGET: ${{ secrets.JUSTRUNMY_HY2_PROXY_URL }}
         run: |
-          if [ -z "$GOST_PROXY_TARGET" ]; then
+          if [ -n "$GOST_PROXY_TARGET" ]; then
             echo "安装 Hysteria2..."
             curl -L -o hysteria \
               https://github.com/apernet/hysteria/releases/latest/download/hysteria-linux-amd64
