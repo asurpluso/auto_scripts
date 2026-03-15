@@ -45,6 +45,7 @@ def send_tg_message(status_icon, status_text, time_left):
         f"{status_icon} {status_text}\n"
         f"⏱️ 剩余: {time_left}\n"
         f"时间: {current_time_str}"
+        f"🌐 当前出口真实 IP: {sb.get_text('body')}"
     )
 
     url = f"https://api.telegram.org/bot{TG_BOT_TOKEN}/sendMessage"
