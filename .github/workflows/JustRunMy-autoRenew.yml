@@ -59,7 +59,6 @@ jobs:
           
       - name: 🚀 运行续期脚本
         env:
-          HY2_PROXY_URL: ${{ secrets.JUSTRUNMY_HY2_PROXY_URL }}
           JUSTRUNMY_EMAIL: ${{ secrets.JUSTRUNMY_EMAIL }}
           JUSTRUNMY_PASSWORD: ${{ secrets.JUSTRUNMY_PASSWORD }}
           TG_BOT_TOKEN: ${{ secrets.JUSTRUNMY_TG_BOT_TOKEN }}
