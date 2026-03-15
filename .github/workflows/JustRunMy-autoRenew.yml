@@ -11,6 +11,10 @@ jobs:
     permissions:
       contents: write
       actions: write
+    concurrency:
+  group: berry-claim
+  cancel-in-progress: false
+  
     steps:
       - name: 📥 下载代码
         uses: actions/checkout@v4
