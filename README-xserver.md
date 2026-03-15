@@ -14,7 +14,7 @@
 
 - XSERVER_GAME_TELEGRAM_CHAT_ID （可选，用于 Telegram 通知）
 
-- HY2_PROXY_URL （可选，Hysteria2 代理 URL）
+- XSERVER_GAME_HY2_PROXY_URL （可选，Hysteria2 代理 URL）
 
 ```
 HY2_PROXY_URL='hysteria2://[auth]@[host]:[port]/?sni=xxx&insecure=1&alpn=h3'
