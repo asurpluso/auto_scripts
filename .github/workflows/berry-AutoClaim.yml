@@ -10,6 +10,9 @@ env:
   SOCKS_PORT: ${{ secrets.SOCKS_PORT || '51080' }}
 permissions:
   contents: write
+concurrency:
+  group: berry-claim
+  cancel-in-progress: false
 jobs:
   claim:
     runs-on: ubuntu-latest
