@@ -17,27 +17,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-          
-      - name: 🛡️ 启动 Gost 代理转发 (可选)
-        env:
-          GOST_PROXY_TARGET: ${{ secrets.GOST_PROXY_TARGET }}
-        run: |
-          if [ -z "$GOST_PROXY_TARGET" ]; then
-            echo "ℹ️ 未配置 GOST_PROXY_TARGET，将使用 GitHub Actions 本地网络直连。"
-            echo "USE_PROXY=false" >> $GITHUB_ENV
-          else
-            wget -q https://github.com/ginuerzh/gost/releases/download/v2.11.5/gost-linux-amd64-2.11.5.gz
-            gunzip gost-linux-amd64-2.11.5.gz
-            chmod +x gost-linux-amd64-2.11.5
-            mv gost-linux-amd64-2.11.5 gost
-            echo "启动 Gost 转发隧道..."
-            nohup ./gost -L http://:8080 -F $GOST_PROXY_TARGET > gost.log 2>&1 &
-            sleep 3
-            echo "测试本地代理连通性..."
-            curl -x http://127.0.0.1:8080 https://api.ipify.org -v
-            echo "USE_PROXY=true" >> $GITHUB_ENV
-          fi
-          
+                   
       - name: 🛠️ 安装系统依赖
         run: |
           sudo apt-get update
@@ -52,6 +32,29 @@ jobs:
         run: |
           pip install seleniumbase aiohttp requests
           seleniumbase install chromedriver
+
+
+      - name: 📡 安装 Hysteria2
+        run: |
+          if [ -n "${{ secrets.JustRunMy_HY2_PROXY_URL }}" ]; then
+            echo "安装 Hysteria2..."
+            curl -L -o hysteria \
+              https://github.com/apernet/hysteria/releases/latest/download/hysteria-linux-amd64
+            chmod +x hysteria
+            sudo mv hysteria /usr/local/bin/hysteria
+            hysteria version
+            echo "✅ Hysteria2 安装完成"
+          else
+            echo "⚠️ 未配置代理，跳过 Hysteria2 安装"
+          fi
+
+
+      - name: ⏳ 添加随机延迟
+        run: |
+          delay=$((RANDOM % 120))
+          echo "随机延迟: ${delay}秒"
+          sleep $delay
+
           
       - name: 🚀 运行续期脚本
         env:
@@ -79,3 +82,20 @@ jobs:
           delete_workflow_pattern: ${{ github.workflow }}
           retain_days: 0
           keep_minimum_runs: 3
+
+      - name: ⏱️ 提交时间文件
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          mkdir -p justrunMy  && echo "$(date +'%Y-%m-%d %H:%M:%S')" > justrunMy/time.txt
+          git add justrunMy/time.txt 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "无变化，无需提交"
+          else
+            TIMESTAMP=$(date +'%Y-%m-%d %H:%M:%S')
+            git commit -m "⏱️ 更新 justrunMy 时间文件: $TIMESTAMP"
+            git fetch origin main
+            git push -f origin HEAD:main
+            echo "✅ 更改已推送"
+          fi
