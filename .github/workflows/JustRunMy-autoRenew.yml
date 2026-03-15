@@ -1,4 +1,5 @@
-name: JustRunMy 自动续期
+name: 🔄 JustRunMy Auto Renew
+
 on:
   workflow_dispatch:
   schedule:
