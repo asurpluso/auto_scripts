@@ -11,6 +11,9 @@ on:
 # 权限配置：允许提交和推送更改
 permissions:
   contents: write
+concurrency:
+  group: berry-claim
+  cancel-in-progress: false
 
 jobs:
   run:
