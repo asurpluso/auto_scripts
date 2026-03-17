@@ -53,9 +53,8 @@ jobs:
           node-version: '22'
 
       - name: 📦 安装依赖
-        run: |
-          cd ${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}
-          npm install
+        working-directory: ${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}
+        run: npm install
 
       - name: 🌐 安装 Playwright 浏览器
         run: npx playwright install chromium --with-deps
@@ -81,20 +80,20 @@ jobs:
           sleep $delay
 
       - name: 🚀 运行续期脚本
+        working-directory: ${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}
         env:
           FREEZE_DISCORD_ACCOUNT: ${{ env.FREEZE_DISCORD_ACCOUNT }}
           HY2_PROXY_URL: ${{ env.HY2_PROXY_URL }}
           SOCKS_PORT: ${{ env.SOCKS_PORT }}
-        run: |
-          cd ${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}
-          npx playwright test
+          SCREENSHOT_DIR: screenshots
+        run: npx playwright test
 
-      - name: 📸 上传失败截图
-        if: failure()
+      - name: 📸 上传截图
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: failure-screenshots
-          path: test-results/
+          name: screenshots
+          path: ${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}/screenshots
           retention-days: 7
 
       - name: ⏱️ 提交执行时间到公开库
