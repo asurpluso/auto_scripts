@@ -21,8 +21,8 @@ jobs:
       - name: Send Start Notification
         uses: appleboy/telegram-action@master
         with:
-          to: ${{ secrets.TG_CHAT_ID }}
-          token: ${{ secrets.TG_BOT_TOKEN }}
+          to: ${{ secrets.WISPBYTE_TG_CHAT_ID }}
+          token: ${{ secrets.WISPBYTE_TG_BOT_TOKEN }}
           message: "*Wispbyte 任务已启动！*\n预计 8–12 分钟完成\n查看: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           format: markdown
 
@@ -43,38 +43,47 @@ jobs:
       - name: Run login script
         timeout-minutes: 6
         env:
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
-          LOGIN_ACCOUNTS: ${{ secrets.LOGIN_ACCOUNTS }}
+          TG_BOT_TOKEN: ${{ secrets.WISPBYTE_TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.WISPBYTE_TG_CHAT_ID }}
+          LOGIN_ACCOUNTS: ${{ secrets.WISPBYTE_LOGIN_ACCOUNTS }}
         run: |
           echo "开始执行 login.py（最多 5 分钟）"
           timeout 5m python login.py && echo "login.py 成功完成" || echo "脚本执行失败或被超时中断"
           echo "本 step 结束"
 
-      # 新增的提交步骤
-      - name: Commit time.txt to repo
-        if: success()
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            
+      - name: 📸 上传调试截图
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-screenshots
+          path: "*.png"
+          retention-days: 3
+          
+      - name: 🧹 清理旧的工作流运行记录
+        uses: Mattraks/delete-workflow-runs@v2
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          delete_workflow_pattern: ${{ github.workflow }}
+          retain_days: 0
+          keep_minimum_runs: 3
+
+      - name: ⏱️ 提交时间文件
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # 如果 time.txt 不存在，说明是第一次运行
-          if [ ! -f time.txt ]; then
-            echo "首次生成时间：$(date +'%Y-%m-%d %H:%M:%S')" > time.txt
-          else
-            echo "$(date +'%Y-%m-%d %H:%M:%S')" > time.txt
-          fi
-          
-          git add time.txt
-          
-          # 如果有更改再提交
+          mkdir -p wispbyte  && echo "$(date +'%Y-%m-%d %H:%M:%S')" > wispbyte/time.txt
+          git add wispbyte/time.txt 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "无变化，无需提交"
           else
-            git commit -m "⏱️ 更新时间文件: $(date +'%Y-%m-%d %H:%M:%S')"
-            git push origin HEAD:main
+            TIMESTAMP=$(date +'%Y-%m-%d %H:%M:%S')
+            git commit -m "⏱️ 更新 wispbyte 时间文件: $TIMESTAMP"
+            git fetch origin main
+            git push -f origin HEAD:main
+            echo "✅ 更改已推送"
           fi
 
   notify-failure:
@@ -85,7 +94,7 @@ jobs:
       - name: Send Telegram Alert
         uses: appleboy/telegram-action@master
         with:
-          to: ${{ secrets.TG_CHAT_ID }}
-          token: ${{ secrets.TG_BOT_TOKEN }}
+          to: ${{ secrets.WISPBYTE_TG_CHAT_ID }}
+          token: ${{ secrets.WISPBYTE_TG_BOT_TOKEN }}
           message: "*GitHub Actions 异常*\n\n状态：`${{ needs.login.result }}`\n${{ needs.login.result == 'cancelled' && '超时自动取消' || '脚本执行失败' }}\n\n查看日志：\nhttps://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}\n\n发 `/retry` 手动重试"
           format: markdown
