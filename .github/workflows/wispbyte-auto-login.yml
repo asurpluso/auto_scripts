@@ -32,6 +32,12 @@ jobs:
           playwright install chromium --with-deps
           echo "依赖安装完成"
 
+      - name: ⏳ 添加随机延迟
+        run: |
+          delay=$((RANDOM % 120))
+          echo "随机延迟: ${delay}秒"
+          sleep $delay
+
       - name: Run login script
         timeout-minutes: 6
         env:
