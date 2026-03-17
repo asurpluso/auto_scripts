@@ -62,12 +62,12 @@ def build_report(results, start_time, end_time):
     ]
 
     if success:
-        lines.append("✅ 成功账号：")
+        lines.append("✅ 登录成功账号：")
         lines.extend([f"• <code>{r['email']}</code>" for r in success])
         lines.append("")
 
     if failed:
-        lines.append("❌ 失败账号：")
+        lines.append("❌ 登录失败账号：")
         lines.extend([f"• <code>{r['email']}</code>" for r in failed])
 
     return "\n".join(lines)
