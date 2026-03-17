@@ -55,7 +55,7 @@ def build_report(results, start_time, end_time):
 
     lines = [
         "Wispbyte 自动登录报告",
-        f"目标: <a href='https://wispbyte.com/client'>控制面板</a>",
+        f"目标: <a href='https://wispbyte.com/client'>wispbyte控制面板</a>",
         f"时间: {start_time} → {end_time}",
         f"结果: <b>{len(success)} 成功</b> | <b>{len(failed)} 失败</b>",
         ""
