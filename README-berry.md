@@ -2,7 +2,7 @@
 
 需要通过下面的链接入群组，然后才能创建account，进而创建 game server。
 
-[https://discord.com/invite/YJhY4NqaKU](https://discord.gg/Y9YUe64X)
+[https://discord.com/invite/wyG95m72](https://discord.com/invite/wyG95m72)
 
 
 请一定一定一定记得打开 Auto-Renewal: ON 这个开关。不然光领金币 不会自动消耗金币去续期的
