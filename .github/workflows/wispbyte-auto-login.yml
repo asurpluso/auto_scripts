@@ -21,8 +21,8 @@ jobs:
       - name: Send Start Notification
         uses: appleboy/telegram-action@master
         with:
-          to: ${{ secrets.WISPBYTE_TG_CHAT_ID }}
-          token: ${{ secrets.WISPBYTE_TG_BOT_TOKEN }}
+          to: ${{ secrets.TG_CHAT_ID }}
+          token: ${{ secrets.TG_BOT_TOKEN }}
           message: "*Wispbyte 任务已启动！*\n预计 8–12 分钟完成\n查看: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           format: markdown
 
@@ -43,8 +43,8 @@ jobs:
       - name: Run login script
         timeout-minutes: 6
         env:
-          TG_BOT_TOKEN: ${{ secrets.WISPBYTE_TG_BOT_TOKEN }}
-          TG_CHAT_ID: ${{ secrets.WISPBYTE_TG_CHAT_ID }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           LOGIN_ACCOUNTS: ${{ secrets.WISPBYTE_LOGIN_ACCOUNTS }}
         run: |
           echo "开始执行 wispbyte_auto_login.py（最多 5 分钟）"
