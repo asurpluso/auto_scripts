@@ -1,5 +1,15 @@
-# auto_berry berryhost游戏机自动领取奖励 建议每天运行一次
+# auto_berry berryhost游戏机自动领取金币奖励（金币主要用于续期） 建议每天运行一次
 
+需要通过下面的链接入群组，然后才能创建account，进而创建 game server。
+
+[https://discord.com/invite/YJhY4NqaKU](https://discord.gg/Y9YUe64X)
+
+
+请一定一定一定记得打开 Auto-Renewal: ON 这个开关。不然光领金币 不会自动消耗金币去续期的
+
+![Berry auto_renew_before](https://github.com/jyucoeng/auto_scripts/blob/main/images/berry_auto_renew.png)
+
+![Berry_renew_after](https://github.com/jyucoeng/auto_scripts/blob/main/images/berry_renew_after.png)
 
 你需要做以下修改：
 
@@ -29,14 +39,16 @@ token2,session_id2,tg_token2,tg_chat_id2
 
 3、token(Discord 账号 Token)的取值方式如下：
 - 打开 Discord 网页版 → F12 → Network → 任意请求 → Headers → authorization
-- 
+  
+![Berry Discord token](https://github.com/jyucoeng/auto_scripts/blob/main/images/berry_discord_token.png)
+  
 4、session_id (Discord Session ID) 的取值方式如下：
 - F12 → Network → 找一个 interactions 请求 → Payload → session_id
 
 ![Berry Session ID](https://github.com/jyucoeng/auto_scripts/blob/main/images/berry_session_id.png)
 
 
-- BERRY_HY2_PROXY_URL （可选，Hysteria2 代理 URL，）
+- HY2_PROXY_URL （可选，Hysteria2 代理 URL，）
 
 ```
 HY2_PROXY_URL='hysteria2://[auth]@[host]:[port]/?sni=xxx&insecure=1&alpn=h3'
