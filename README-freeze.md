@@ -3,6 +3,8 @@
 使用 GitHub Actions 自动续期 FreezeHost 免费服务器。
 
 ## 📋 项目结构
+
+```
 auto_scripts/                      # 公开仓库
 ├── .github/workflows/
 │   └── freeze-AutoRenew.yml      # GitHub Actions 工作流
@@ -83,7 +85,7 @@ permissions:
 
 **Actions** → **🔄 FreezeHost 自动续期** → **Run workflow**
 
-## � 权限配置
+## 🔐 权限配置
 
 GitHub Actions 工作流需要以下权限：
 
@@ -97,7 +99,7 @@ GitHub Actions 工作流需要以下权限：
 
 ## 🕐 运行时间
 
-- **定时运行**：每 隔2 天早上 9 点 23 分（北京时间）
+- **定时运行**：每 2 天早上 9 点 23 分（北京时间）
 - **手动触发**：可随时在 Actions 页面手动运行
 - **修改时间**：编辑 `.github/workflows/freeze-AutoRenew.yml` 中的 `cron` 表达式
 
