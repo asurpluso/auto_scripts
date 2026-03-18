@@ -63,8 +63,8 @@ jobs:
         env:
           JUSTRUNMY_EMAIL: ${{ secrets.JUSTRUNMY_EMAIL }}
           JUSTRUNMY_PASSWORD: ${{ secrets.JUSTRUNMY_PASSWORD }}
-          TG_BOT_TOKEN: ${{ secrets.JUSTRUNMY_TG_BOT_TOKEN }}
-          TG_CHAT_ID: ${{ secrets.JUSTRUNMY_TG_CHAT_ID }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
         run: |
           xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" \
             python justrunmy_renew.py
