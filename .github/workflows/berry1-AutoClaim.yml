@@ -13,6 +13,7 @@ permissions:
 concurrency:
   group: berry-claim-${{ github.ref }}
   cancel-in-progress: false
+  
 jobs:
   claim:
     runs-on: ubuntu-latest
