@@ -1,0 +1,86 @@
+name: 🔄 BerryHost2 Auto Claim
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 1 * * *'   # 每天 UTC 01:20（北京时间 09:20）
+env:
+  PROJECT_DIR: berry1
+  BERRY_BATCH_ACCOUNTS: ${{ secrets.BERRY2_BATCH_ACCOUNTS }}
+  HY2_PROXY_URL: ${{ secrets.BERRY2_HY2_PROXY_URL }}
+  SOCKS_PORT: ${{ secrets.SOCKS_PORT || '51080' }}
+permissions:
+  contents: write
+concurrency:
+  group: berry-claim-${{ github.ref }}
+  cancel-in-progress: false
+  
+jobs:
+  claim:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: 📥 检出公开库代码
+        uses: actions/checkout@v4
+
+      - name: 📥 检出私有仓库
+        uses: actions/checkout@v4
+        with:
+          repository: jyucoeng/auto_berry_renew_private
+          token: ${{ secrets.PRIVATE_REPO_TOKEN }}
+          ref: main
+          path: ${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}
+          fetch-depth: 1
+
+      - name: 🐍 设置 Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: 📡 安装 Hysteria2
+        run: |
+          if [ -n "${{ env.HY2_PROXY_URL }}" ]; then
+            echo "安装 Hysteria2..."
+            curl -L -o hysteria \
+              https://github.com/apernet/hysteria/releases/latest/download/hysteria-linux-amd64
+            chmod +x hysteria
+            sudo mv hysteria /usr/local/bin/hysteria
+            hysteria version
+            echo "✅ Hysteria2 安装完成"
+          else
+            echo "⚠️ 未配置代理，跳过 Hysteria2 安装"
+          fi
+
+      - name: 🐍 安装 Python 依赖
+        run: |
+          pip install requests[socks]
+
+      - name: ⏳ 添加随机延迟
+        run: |
+          delay=$((RANDOM % 120))
+          echo "随机延迟: ${delay}秒"
+          sleep $delay
+
+      - name: 🎮 执行每日领取
+        env:
+          BERRY_BATCH_ACCOUNTS: ${{ env.BERRY_BATCH_ACCOUNTS }}
+          HY2_PROXY_URL: ${{ env.HY2_PROXY_URL }}
+          SOCKS_PORT: ${{ env.SOCKS_PORT }}
+        run: |
+          cd ${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}
+          python berry.py
+
+      - name: ⏱️ 提交执行时间到公开库
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          mkdir -p ${{ env.PROJECT_DIR }} && echo "$(date +'%Y-%m-%d %H:%M:%S')" > ${{ env.PROJECT_DIR }}/time.txt
+          git add ${{ env.PROJECT_DIR }}/time.txt 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "无变化，无需提交"
+          else
+            TIMESTAMP=$(date +'%Y-%m-%d %H:%M:%S')
+            git commit -m "⏱️ 更新 ${{ env.PROJECT_DIR }} 执行时间: $TIMESTAMP"
+            git push origin main
+            echo "✅ 更改已推送到公开库"
+          fi
