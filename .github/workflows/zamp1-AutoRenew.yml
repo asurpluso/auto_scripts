@@ -21,7 +21,7 @@ jobs:
     timeout-minutes: 30
     env:
       PROJECT_DIR: zampto1
-      SCRIPT_NAME: zampto-renew.py
+      SCRIPT_NAME: zampto1-renew.py
       SCRIPT_DESC: Zampto1 续期脚本
     
     steps:
@@ -103,7 +103,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: zampto-screenshots-${{ github.run_id }}
+          name: zampto1-screenshots-${{ github.run_id }}
           path: ${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}/screenshots/
           retention-days: 7
 
