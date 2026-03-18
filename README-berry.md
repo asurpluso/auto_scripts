@@ -48,10 +48,10 @@ token2,session_id2,tg_token2,tg_chat_id2
 ![Berry Session ID](https://github.com/jyucoeng/auto_scripts/blob/main/images/berry_session_id.png)
 
 
-- HY2_PROXY_URL （可选，Hysteria2 代理 URL，）
+- BERRY_HY2_PROXY_URL （可选，Hysteria2 代理 URL，）
 
 ```
-HY2_PROXY_URL='hysteria2://[auth]@[host]:[port]/?sni=xxx&insecure=1&alpn=h3'
+BERRY_HY2_PROXY_URL='hysteria2://[auth]@[host]:[port]/?sni=xxx&insecure=1&alpn=h3'
 ```
 
 ### 如果不设置此环境变量，脚本将使用直连模式
