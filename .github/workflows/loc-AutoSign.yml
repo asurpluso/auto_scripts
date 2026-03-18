@@ -11,6 +11,10 @@ on:
 # 权限配置：允许提交和推送更改
 permissions:
   contents: write
+concurrency:
+  group: loc-sign
+  cancel-in-progress: false
+
 
 jobs:
   run:
