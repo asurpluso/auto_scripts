@@ -28,10 +28,10 @@ a2@example.com,pass2,998877,123456:AAxxxxxx,123456789'
 
 2、发 TG：email,password,server_id,tg_bot_token,tg_chat_id
 
-- HY2_PROXY_URL （可选，Hysteria2 代理 URL）
+- KATABUMP_HY2_PROXY_URL  （可选，Hysteria2 代理 URL）
 
 ```
-HY2_PROXY_URL='hysteria2://[auth]@[host]:[port]/?sni=xxx&insecure=1&alpn=h3'
+KATABUMP_HY2_PROXY_URL ='hysteria2://[auth]@[host]:[port]/?sni=xxx&insecure=1&alpn=h3'
 ```
 ### 如果不设置此环境变量，脚本将使用直连模式
 
