@@ -21,7 +21,7 @@ jobs:
     timeout-minutes: 30
     env:
       PROJECT_DIR: zampto1
-      SCRIPT_NAME: zampto1-renew.py
+      SCRIPT_NAME: zampto-renew.py
       SCRIPT_DESC: Zampto1 续期脚本
     
     steps:
