@@ -15,11 +15,11 @@
 
   <img width="1577" height="570" alt="CleanShot 2026-02-14 at 20 27 03" src="https://github.com/user-attachments/assets/3e395d6f-f9b1-41bb-9136-9cb7835110e5" />
 
-- WEIRDHOST_TG_BOT_TOKEN
-- WEIRDHOST_TG_CHAT_ID
+- TG_BOT_TOKEN
+- TG_CHAT_ID
 ### 代理配置（可选）
 
-- HY2_PROXY_URL （可选，Hysteria2 代理 URL）
+- WEIRDHOST_HY2_PROXY_URL （可选，Hysteria2 代理 URL）
 
 ```
 HY2_PROXY_URL=hysteria2://[uuid]@[host]:[port]?sni=xxx&insecure=1&alpn=h3
