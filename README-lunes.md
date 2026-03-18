@@ -12,7 +12,7 @@
       
        LUNES_DE1_ACCOUNTS_BATCH （lunes-DE1的账号环境变量） 
 ```
-       LUNES_US2_ACCOUNTS_BATCH （lunes-US2的账号环境变量）
+LUNES_US2_ACCOUNTS_BATCH （lunes-US2的账号环境变量）
 ```
        LUNES_US6_ACCOUNTS_BATCH （lunes-US6的账号环境变量）
 
