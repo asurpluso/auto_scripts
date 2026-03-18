@@ -17,7 +17,7 @@
 - XSERVER_GAME_HY2_PROXY_URL （可选，Hysteria2 代理 URL）
 
 ```
-HY2_PROXY_URL='hysteria2://[auth]@[host]:[port]/?sni=xxx&insecure=1&alpn=h3'
+XSERVER_GAME_HY2_PROXY_URL='hysteria2://[auth]@[host]:[port]/?sni=xxx&insecure=1&alpn=h3'
 ```
 ### 如果不设置此环境变量，脚本将使用直连模式
 
@@ -26,7 +26,7 @@ HY2_PROXY_URL='hysteria2://[auth]@[host]:[port]/?sni=xxx&insecure=1&alpn=h3'
 ```
 SOCKS_PORT='51080'
 ```
-### 仅在设置了 HY2_PROXY_URL 时生效
+### 仅在设置了 XSERVER_GAME_HY2_PROXY_URL 时生效
 
 
 ## 2、开放自动写time.txt的文件权限。
