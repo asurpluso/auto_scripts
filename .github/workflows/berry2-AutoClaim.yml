@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '20 1 * * *'   # 每天 UTC 01:20（北京时间 09:20）
 env:
-  PROJECT_DIR: berry1
+  PROJECT_DIR: berry2
   BERRY_BATCH_ACCOUNTS: ${{ secrets.BERRY2_BATCH_ACCOUNTS }}
   HY2_PROXY_URL: ${{ secrets.BERRY2_HY2_PROXY_URL }}
   SOCKS_PORT: ${{ secrets.SOCKS_PORT || '51080' }}
