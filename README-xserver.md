@@ -10,9 +10,9 @@
 
 - XSERVER_GAME_PASSWORD （XServer GAME 脚本需要的密码）
 
-- XSERVER_GAME_TELEGRAM_BOT_TOKEN （可选，用于 Telegram 通知）
+- TG_BOT_TOKEN （可选，用于 Telegram 通知）
 
-- XSERVER_GAME_TELEGRAM_CHAT_ID （可选，用于 Telegram 通知）
+- TG_CHAT_ID （可选，用于 Telegram 通知）
 
 - XSERVER_GAME_HY2_PROXY_URL （可选，Hysteria2 代理 URL）
 
