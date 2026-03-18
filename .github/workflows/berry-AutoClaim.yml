@@ -11,7 +11,7 @@ env:
 permissions:
   contents: write
 concurrency:
-  group: berry-claim
+  group: ${{ github.workflow }}-${{ github.ref }} # 使用工作流名称和分支名作为组名
   cancel-in-progress: false
 jobs:
   claim:
