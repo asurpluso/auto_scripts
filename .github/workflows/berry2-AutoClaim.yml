@@ -69,19 +69,44 @@ jobs:
           cd ${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}
           python berry.py
 
-      - name: ⏱️ 提交执行时间到公开库
+      - name: 提交执行时间到公开库
         if: always()
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          mkdir -p ${{ env.PROJECT_DIR }} && echo "$(date +'%Y-%m-%d %H:%M:%S')" > ${{ env.PROJECT_DIR }}/time.txt
-          git add ${{ env.PROJECT_DIR }}/time.txt 2>/dev/null || true
-          if git diff --cached --quiet; then
-            echo "无变化，无需提交"
-          else
-            TIMESTAMP=$(date +'%Y-%m-%d %H:%M:%S')
-            git commit -m "⏱️ 更新 ${{ env.PROJECT_DIR }} 执行时间: $TIMESTAMP"
-            git pull --rebase origin main
-            git push origin main
-            echo "✅ 更改已推送到公开库"
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+        # 1. 确保目录存在并更新时间
+        mkdir -p ${{ env.PROJECT_DIR }}
+        TIMESTAMP=$(date +'%Y-%m-%d %H:%M:%S')
+        echo "$TIMESTAMP" > ${{ env.PROJECT_DIR }}/time.txt
+
+        # 2. 检查是否有实际变动
+        git add ${{ env.PROJECT_DIR }}/time.txt
+        if git diff --cached --quiet; then
+          echo "⚠️ 无变化，无需提交"
+          exit 0
+        fi
+
+        # 3. 提交更改
+        git commit -m "⏱️ 更新 ${{ env.PROJECT_DIR }} 执行时间: $TIMESTAMP"
+
+        # 4. 核心优化：循环重试推送，解决并发冲突
+        # 尝试最多 5 次推送，每次失败先拉取远程更新再重试
+        for i in {1..5}; do
+          echo "尝试推送第 $i 次..."
+        
+          # 尝试拉取并变基 (Rebase)，确保本地提交在远程提交之后
+          if git pull --rebase origin main; then
+            # 如果拉取成功，尝试推送
+            if git push origin main; then
+              echo "✅ 更改已成功推送到公开库"
+              exit 0
+            fi
           fi
+          
+          echo "❌ 推送冲突，等待 5 秒后重试..."
+          sleep 5
+        done
+
+        echo "误差：经过多次尝试后依然无法推送成功。"
+        exit 1
