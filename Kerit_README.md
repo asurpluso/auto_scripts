@@ -9,7 +9,7 @@
 | Secret 名 | 必填 | 说明 | 示例 |
 |---|---|---|---|
 | `KERIT_ACCOUNT` | ✅ 必填 | 🧾 Kerit 登录邮箱和 Gmail 应用密码，用英文逗号分隔 | `example@gmail.com,abcdabcdabcdabcd` |
-| `HY2_PROXY_URL` | ✅ 必填 | 🌐 hy2 代理地址,代码里会自动由hy2生成一个临时的socks5，用完即刻销毁 | `hysteria2://[auth]@[host]:[port]/?sni=xxx&insecure=1&alpn=h3` |
+| `KERIT_HY2_PROXY_URL` | ✅ 必填 | 🌐 hy2 代理地址,代码里会自动由hy2生成一个临时的socks5，用完即刻销毁 | `hysteria2://[auth]@[host]:[port]/?sni=xxx&insecure=1&alpn=h3` |
 | `TG_BOT` | 🔲 可选 | 📨 Telegram 推送，Chat ID 和 Bot Token 用英文逗号分隔 | `987654321,123456:AAFxxx` |
 
 ## 📝 Gmail 应用密码生成方式
