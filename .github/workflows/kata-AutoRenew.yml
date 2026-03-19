@@ -140,6 +140,7 @@ jobs:
           else
             TIMESTAMP=$(date +'%Y-%m-%d %H:%M:%S')
             git commit -m "⏱️ 更新 ${{ env.PROJECT_DIR }} 执行时间: $TIMESTAMP"
+            git pull --rebase origin main  # 拉取远程更新
             git push origin main
             echo "✅ 更改已推送到公开库"
           fi
