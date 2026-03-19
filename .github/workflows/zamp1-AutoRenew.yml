@@ -131,5 +131,6 @@ jobs:
             TIMESTAMP=$(date +'%Y-%m-%d %H:%M:%S')
             git commit -m "⏱️ 更新 ${{ env.PROJECT_DIR }} 执行时间: $TIMESTAMP"
             git push origin main
+            git pull --rebase origin main  # 拉取远程更新
             echo "✅ 更改已推送到公开库"
           fi
