@@ -15,7 +15,7 @@ jobs:
           python-version: '3.10'
       - name: 📡 安装 Hysteria2
         run: |
-          if [ -n "${{ secrets.HY2_PROXY_URL }}" ]; then
+          if [ -n "${{ secrets.KERIT_HY2_PROXY_URL }}" ]; then
             echo "安装 Hysteria2..."
             curl -L -o hysteria \
               https://github.com/apernet/hysteria/releases/latest/download/hysteria-linux-amd64
@@ -48,7 +48,7 @@ jobs:
         env:
           PYTHONIOENCODING: utf-8
           KERIT_ACCOUNT: ${{ secrets.KERIT_ACCOUNT }}
-          HY2_PROXY_URL: ${{ secrets.HY2_PROXY_URL }}
+          HY2_PROXY_URL: ${{ secrets.KERIT_HY2_PROXY_URL }}
           SOCKS_PORT: ${{ secrets.SOCKS_PORT || '51080' }}
           TG_BOT: ${{ secrets.TG_BOT }}
         run: |
