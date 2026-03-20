@@ -27,7 +27,7 @@ jobs:
       PRIVATE_REPO_TOKEN: ${{ secrets.PRIVATE_REPO_TOKEN }}
       # IDC56_BATCH 格式: email,password[,tg_token,tg_chat] 每行一个账号，多个账号用换行符分隔
       IDC56_BATCH: ${{ secrets.IDC56_BATCH }}
-      HY2_PROXY_URL: ${{ secrets.HY2_PROXY_URL }}
+      HY2_PROXY_URL: ${{ secrets.IDC56_HY2_PROXY_URL }}
       SOCKS_PORT: ${{ secrets.SOCKS_PORT || '51080' }}
     
     steps:
