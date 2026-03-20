@@ -160,6 +160,6 @@ async def main():
 if __name__ == "__main__":
     accounts = os.getenv('LOGIN_ACCOUNTS', '').strip()
     count = len([a for a in accounts.split(',') if ':' in a]) if accounts else 0
-    print(f"[{datetime.now()}] wispbyte_auto_login.py 开始运行", file=sys.stderr)
+    print(f"[{datetime.now()}] wispbyte_login.py 开始运行", file=sys.stderr)
     print(f"Python: {sys.version.split()[0]}, 有效账号数: {count}", file=sys.stderr)
     asyncio.run(main())
