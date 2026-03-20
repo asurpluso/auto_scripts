@@ -101,7 +101,9 @@ jobs:
           HY2_PROXY_URL: ${{ env.HY2_PROXY_URL }}
           SOCKS_PORT: ${{ env.SOCKS_PORT }}
           SCREENSHOT_DIR: "screenshots"
-        run: xvfb-run -a python ${{ env.SCRIPT_NAME }}
+        run: |
+          xvfb-run --auto-servernum --server-args="-screen 0 1920x1080x24" \
+            python 56idc1_login.py
         working-directory: ${{ github.repository_owner }}-${{ github.event.repository.name }}-${{ env.PROJECT_DIR }}
 
       # 步骤 9: 上传截图
