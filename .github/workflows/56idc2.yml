@@ -6,8 +6,8 @@ on:
   
   # 定时触发
   schedule:
-    # 每月 13 / 26 号 UTC 19:10（北京时间 03:10）
-    - cron: '10 19 13,26 * *'
+    # 每月 13 / 26 号 UTC 19:40（北京时间 03:40）
+    - cron: '40 19 13,26 * *'
 
 # 权限配置：允许提交和推送更改
 permissions:
@@ -26,8 +26,8 @@ jobs:
       SCRIPT_DESC: 56IDC2 登录脚本
       PRIVATE_REPO_TOKEN: ${{ secrets.PRIVATE_REPO_TOKEN }}
       # IDC56_BATCH 格式: email,password[,tg_token,tg_chat] 每行一个账号，多个账号用换行符分隔
-      IDC56_BATCH: ${{ secrets.56IDC2_BATCH }}
-      HY2_PROXY_URL: ${{ secrets.56IDC2_HY2_PROXY_URL }}
+      IDC56_BATCH: ${{ secrets.IDC56_BATCH2 }}
+      HY2_PROXY_URL: ${{ secrets.IDC56_HY2_PROXY_URL2 }}
       SOCKS_PORT: ${{ secrets.SOCKS_PORT || '51080' }}
     
     steps:
