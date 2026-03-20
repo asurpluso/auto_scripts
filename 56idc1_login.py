@@ -204,7 +204,7 @@ def login_one(acc: Dict[str, str], idx: int, proxy: str):
             and any(c.get("name") == "cf_clearance" for c in sb.get_cookies())
         )
 
-        username = None
+        username = sb.get_text("//div[@class='panel-body']/strong").strip()
         if ok:
             try:
                 username = sb.get_text("//div[@class='panel-body']/strong").strip()
