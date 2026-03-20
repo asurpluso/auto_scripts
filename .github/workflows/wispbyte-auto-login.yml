@@ -45,8 +45,8 @@ jobs:
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
           LOGIN_ACCOUNTS: ${{ secrets.WISPBYTE_LOGIN_ACCOUNTS }}
         run: |
-          echo "开始执行 wispbyte_auto_login.py（最多 5 分钟）"
-          timeout 5m python wispbyte_auto_login.py && echo "lwispbyte_auto_login.py 成功完成" || echo "脚本执行失败或被超时中断"
+          echo "开始执行 wispbyte_login.py（最多 5 分钟）"
+          timeout 5m python wispbyte_login.py && echo "wispbyte_login.py 成功完成" || echo "脚本执行失败或被超时中断"
           echo "本 step 结束"
 
             
