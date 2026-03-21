@@ -31,5 +31,5 @@ jobs:
         DOMAIN: ${{ secrets.YUN69_DOMAIN }}  
         USERNAME: ${{ secrets.YUN69_USERNAME }}
         PASSWORD: ${{ secrets.YUN69_PASSWORD }}
-        TG_TOKEN: ${{ secrets.TG_TOKEN }}
-        TG_ID: ${{ secrets.TG_ID }}
+        TG_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+        TG_ID: ${{ secrets.TG_CHAT_ID }}
