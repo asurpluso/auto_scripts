@@ -1,9 +1,9 @@
 {
-  "name": "am-check-in",
+  "name": "69-check-in",
   "version": "1.0.0",
   "description": "A script to perform check-ins and send Telegram messages https://github.com/amclubs/am-check-in",
   "type": "module",
-  "main": "_worker.js",
+  "main": "69yun_check_in.js",
   "scripts": {
     "start": "node _worker.js"
   },
