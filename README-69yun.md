@@ -5,7 +5,8 @@ GitHub Actions使用方法
 1. 把当前github的项目能过 use this template 复制创建到你的创建里。
 ### ② 设置 GitHub Actions 变量
 1. Settings -> secrets and variables -> Actions -> Secrets -> New repository secrets
-2. 设置对应的变量参数 DOMAIN、USERNAME、PASSWORD （详情参数看下面变量说明）
+2. 设置对应的变量参数
+YUN69_DOMAIN  YUN69_USERNAME  YUN69_PASSWORD 
 3. (可选)设置TG通知参数 TG_TOKEN、TG_ID （详情参数看下面变量说明）
 ### ③ 设置定时任务时间
 1. 进入代码.github/workflows -> check-in-job.yml 
