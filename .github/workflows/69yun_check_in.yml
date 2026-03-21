@@ -25,11 +25,11 @@ jobs:
 
     - name: Run scheduled check-in
       run: |
-        node _worker.js  
+        node 69yun_check_in.js  
       env:
         JC_TYPE: ${{ secrets.JC_TYPE }} 
-        DOMAIN: ${{ secrets.DOMAIN }}  
-        USERNAME: ${{ secrets.USERNAME }}
-        PASSWORD: ${{ secrets.PASSWORD }}
+        DOMAIN: ${{ secrets.YUN69_DOMAIN }}  
+        USERNAME: ${{ secrets.YUN69_USERNAME }}
+        PASSWORD: ${{ secrets.YUN69_PASSWORD }}
         TG_TOKEN: ${{ secrets.TG_TOKEN }}
         TG_ID: ${{ secrets.TG_ID }}
