@@ -2,7 +2,7 @@
 
 自动续期 Mephia 服务器，支持多账号、HY2 代理、Telegram 通知。建议每 3 天运行一次。
 
-https://discord.gg/ezHfNgmV
+[https://discord.gg/3nTWxEKd](https://discord.gg/3nTWxEKd)
 
 ## 环境变量配置
 
