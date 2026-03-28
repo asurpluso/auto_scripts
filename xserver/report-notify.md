@@ -1,5 +1,8 @@
-Runner repo: asurpluso/auto_scripts | Run ID: 23657068667 | UTC: 2026-03-27 16:40:51
+Runner repo: asurpluso/auto_scripts | Run ID: 23675369594 | UTC: 2026-03-28 02:26:25
 
-# XServer 续期报告
+**最后运行时间**: `2026-03-28 10:26:13`
 
-脚本未生成报告文件
+**运行结果**: <br>
+🖥️服务器:`🇯🇵Xserver(MC)`<br>
+📊续期结果:❓Unknown<br>
+🕛️旧到期时间: `2026-03-30`<br>
